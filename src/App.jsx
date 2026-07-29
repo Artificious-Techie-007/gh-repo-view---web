@@ -23,9 +23,9 @@ function RequireRole({ roles, children }) {
 
 function Shell({ children }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen flex-col md:flex-row">
       <Sidebar />
-      {children}
+      <div className="min-w-0 flex-1">{children}</div>
     </div>
   )
 }

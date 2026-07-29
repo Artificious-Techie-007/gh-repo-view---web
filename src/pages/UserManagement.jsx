@@ -70,8 +70,8 @@ export default function UserManagement() {
     <div className="flex-1">
       <TopBar title="Manage Users" />
       <div className="grid gap-6 p-6 md:p-8 lg:grid-cols-[1fr_320px]">
-        <div className="overflow-hidden rounded-xl border border-border bg-card">
-          <table className="w-full text-left text-sm">
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
+          <table className="w-full min-w-[600px] text-left text-sm">
             <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-muted">
               <tr>
                 <th className="px-4 py-3 font-medium">Name</th>

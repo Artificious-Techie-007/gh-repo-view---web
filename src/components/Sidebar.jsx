@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { ROLES } from '../utils/constants'
 import logo from '../assets/logo.png'
+import Avatar from './Avatar'
 
 const LINK_BASE =
   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors'
@@ -104,8 +105,15 @@ export default function Sidebar() {
         {navLinks}
 
         <div className="border-t border-border px-6 py-4">
-          <p className="truncate text-sm font-medium">{user?.name}</p>
-          <p className="mb-3 text-xs capitalize text-muted">{user?.role?.replace('_', ' ')}</p>
+          <div className="mb-3 flex items-center gap-2.5">
+            <Avatar name={user?.name} size="md" />
+            <div className="min-w-0">
+              <p className="truncate text-sm font-medium">{user?.name}</p>
+              <p className="truncate text-xs capitalize text-muted">
+                {user?.role?.replace('_', ' ')}
+              </p>
+            </div>
+          </div>
           <button
             onClick={logout}
             className="text-xs font-medium text-muted underline-offset-2 hover:text-ink hover:underline"

@@ -1,5 +1,6 @@
 import StatusBadge from './StatusBadge'
 import ProgressBar from './ProgressBar'
+import Avatar from './Avatar'
 import { deriveStatus } from '../utils/constants'
 
 /**
@@ -18,8 +19,8 @@ export default function TaskTable({ tasks, onEdit, onDelete, canManage }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card">
-      <table className="w-full text-left text-sm">
+    <div className="overflow-x-auto rounded-xl border border-border bg-card">
+      <table className="w-full min-w-[760px] text-left text-sm">
         <thead className="border-b border-border bg-surface text-xs uppercase tracking-wide text-muted">
           <tr>
             <th className="px-4 py-3 font-medium">Task Name</th>
@@ -36,7 +37,12 @@ export default function TaskTable({ tasks, onEdit, onDelete, canManage }) {
             return (
               <tr key={task.id} className="border-b border-border last:border-0">
                 <td className="px-4 py-3 font-medium">{task.name}</td>
-                <td className="px-4 py-3 text-muted">{task.assignedToName}</td>
+                <td className="px-4 py-3 text-muted">
+                  <div className="flex items-center gap-2">
+                    <Avatar name={task.assignedToName} size="sm" />
+                    {task.assignedToName}
+                  </div>
+                </td>
                 <td className="px-4 py-3 text-muted">
                   {new Date(task.deadline).toLocaleDateString(undefined, {
                     month: 'short',

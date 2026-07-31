@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TopBar from '../components/TopBar'
+import Avatar from '../components/Avatar'
 import { api } from '../lib/api'
 import { ROLES } from '../utils/constants'
 
@@ -90,7 +91,12 @@ export default function UserManagement() {
               ) : (
                 users.map((u) => (
                   <tr key={u.id} className="border-b border-border last:border-0">
-                    <td className="px-4 py-3 font-medium">{u.name}</td>
+                    <td className="px-4 py-3 font-medium">
+                      <div className="flex items-center gap-2.5">
+                        <Avatar name={u.name} size="sm" />
+                        {u.name}
+                      </div>
+                    </td>
                     <td className="px-4 py-3 text-muted">{u.email}</td>
                     <td className="px-4 py-3">
                       <select

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import logo from '../assets/logo.png'
 
 export default function Login() {
   const { login } = useAuth()
@@ -27,12 +28,17 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-surface px-4">
       <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8">
-        <div className="mb-6 flex items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-accent" />
-          <span className="font-display text-lg font-semibold">Pace</span>
+        <div className="mb-6 flex items-center gap-2.5">
+          <img src={logo} alt="Lead City Voices" className="h-9 w-9" />
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+              Lead City Voices
+            </p>
+            <p className="font-display text-lg font-semibold leading-tight">Pulse</p>
+          </div>
         </div>
         <h1 className="font-display text-xl font-semibold">Sign in</h1>
-        <p className="mt-1 text-sm text-muted">Track and assign work for your team.</p>
+        <p className="mt-1 text-sm text-muted">Operating System for the Merlins ⚡</p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>

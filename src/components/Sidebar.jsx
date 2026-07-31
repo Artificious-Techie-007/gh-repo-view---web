@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { ROLES } from '../utils/constants'
+import logo from '../assets/logo.png'
 
 const LINK_BASE =
   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors'
@@ -18,6 +19,18 @@ export default function Sidebar() {
   ]
 
   const visibleLinks = links.filter((l) => !l.roles || l.roles.includes(user?.role))
+
+  const brandBlock = (
+    <div className="flex items-center gap-2.5">
+      <img src={logo} alt="Lead City Voices" className="h-9 w-9 flex-shrink-0" />
+      <div className="min-w-0">
+        <p className="truncate text-[10px] font-semibold uppercase tracking-wider text-muted">
+          Lead City Voices
+        </p>
+        <p className="font-display text-lg font-semibold leading-tight tracking-tight">Pulse</p>
+      </div>
+    </div>
+  )
 
   const navLinks = (
     <nav className="flex-1 space-y-1 px-3">
@@ -43,11 +56,12 @@ export default function Sidebar() {
   return (
     <>
       {/* Slim bar, mobile only. Stays in normal document flow so the dashboard
-          sits directly below it — never below the full menu. */}
+          sits directly below it — never below the full menu. Kept compact:
+          no tagline here, just enough to identify the app and open the menu. */}
       <div className="flex items-center justify-between border-b border-border bg-card px-4 py-3 md:hidden">
         <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-accent" />
-          <span className="font-display text-lg font-semibold tracking-tight">Pace</span>
+          <img src={logo} alt="Lead City Voices" className="h-7 w-7" />
+          <span className="font-display text-lg font-semibold tracking-tight">Pulse</span>
         </div>
         <button
           onClick={() => setOpen(true)}
@@ -73,18 +87,18 @@ export default function Sidebar() {
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between px-6 py-6">
-          <div className="flex items-center gap-2">
-            <div className="h-2.5 w-2.5 rounded-full bg-accent" />
-            <span className="font-display text-lg font-semibold tracking-tight">Pace</span>
+        <div className="px-6 py-6">
+          <div className="flex items-center justify-between">
+            {brandBlock}
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="rounded-lg border border-border p-2 text-muted md:hidden"
+            >
+              ✕
+            </button>
           </div>
-          <button
-            onClick={() => setOpen(false)}
-            aria-label="Close menu"
-            className="rounded-lg border border-border p-2 text-muted md:hidden"
-          >
-            ✕
-          </button>
+          <p className="mt-3 text-xs text-muted">Operating System for the Merlins ⚡</p>
         </div>
 
         {navLinks}
